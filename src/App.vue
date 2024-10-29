@@ -5,6 +5,7 @@ import TopBar from "./components/TopBar.vue"
 import Example0 from "./examples/example0.vue"
 import Example1 from "./examples/example1.vue"
 import Example2 from "./examples/example2.vue"
+import Example3 from "./examples/example3.vue"
 //import Example2 from "./examples/example2_completed.vue"
 import Loading from "./components/Loading.vue"
 
@@ -27,6 +28,7 @@ function toggleSelectedExample(exampleNum){
     <Example0 v-if="selectedExample==0"></Example0>
     <Example1 v-if="selectedExample==1"></Example1>
     <Example2 v-if="selectedExample==2"></Example2>
+    <Example3 v-if="selectedExample==3"></Example3>
   </div>
   <Loading class="loader-overlay" v-if="computeStore.computing"></Loading>
 </template>
