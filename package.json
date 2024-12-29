@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aectech-2024-kpf-ttcore-workshop": "file:",
     "compute-rhino3d": "^0.13.0-beta",
     "pinia": "^2.1.7",
     "three": "^0.160.0",

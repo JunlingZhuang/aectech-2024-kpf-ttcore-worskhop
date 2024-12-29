@@ -2,44 +2,69 @@
   <div id="top-bar">
     <div id="title-container">
       <div style="display: flex; align-items: center">
-        <img class="logo-image" alt="AECtechLogo" src="../assets/graphics/AECtech-12.png" />
-        <h2>Grasshopper on the Web</h2>
+        <h2>3D Geometry Analysis on web</h2>
         <div id="navigation-tabs">
-          <div :class="{ 'selected-tab': selectedExample === 0, 'navigation-tab': selectedExample !== 0 }" @click="toggleExample(0)">Example 0</div>
-          <div :class="{ 'selected-tab': selectedExample === 1, 'navigation-tab': selectedExample !== 1 }" @click="toggleExample(1)">Example 1</div>
-          <div :class="{ 'selected-tab': selectedExample === 2, 'navigation-tab': selectedExample !== 2 }" @click="toggleExample(2)">Example 2</div>
-          <div :class="{ 'selected-tab': selectedExample === 3, 'navigation-tab': selectedExample !== 3 }" @click="toggleExample(3)">Example 3</div>
+          <!-- <div
+            :class="{
+              'selected-tab': selectedExample === 0,
+              'navigation-tab': selectedExample !== 0,
+            }"
+            @click="toggleExample(0)"
+          >
+            Example 0
+          </div> -->
+          <div
+            :class="{
+              'selected-tab': selectedExample === 1,
+              'navigation-tab': selectedExample !== 1,
+            }"
+            @click="toggleExample(1)"
+          >
+            Example 1
+          </div>
+          <div
+            :class="{
+              'selected-tab': selectedExample === 2,
+              'navigation-tab': selectedExample !== 2,
+            }"
+            @click="toggleExample(2)"
+          >
+            Example 2
+          </div>
         </div>
       </div>
-      <DarkModeToggle @update="changeMode" :title="'darkMode'" id="toggle" ></DarkModeToggle>
+      <DarkModeToggle
+        @update="changeMode"
+        :title="'darkMode'"
+        id="toggle"
+      ></DarkModeToggle>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import DarkModeToggle from "./DarkModeToggle.vue"
+import { ref } from "vue";
+import DarkModeToggle from "./DarkModeToggle.vue";
 
 const props = defineProps(["selectedExample"]);
-let selectedExample = ref(props.selectedExample)
+let selectedExample = ref(props.selectedExample);
 
 function toggleExample(exampleNum) {
-  selectedExample.value = exampleNum
-  emitSelectedExampleChange()
+  selectedExample.value = exampleNum;
+  emitSelectedExampleChange();
 }
 
-const emits = defineEmits(['selectedExampleChange'])
-function emitSelectedExampleChange(){
-  emits("selectedExampleChange", selectedExample.value)
+const emits = defineEmits(["selectedExampleChange"]);
+function emitSelectedExampleChange() {
+  emits("selectedExampleChange", selectedExample.value);
 }
 
-function changeMode(value, title){
+function changeMode(value, title) {
   if (value) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
   }
-  else {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }  
 }
 </script>
 
@@ -62,12 +87,13 @@ function changeMode(value, title){
   display: flex;
   align-items: center;
   margin-right: 1.5rem;
+  padding-left: 1.5rem;
   width: 100vw;
-  justify-content: space-between 
+  justify-content: space-between;
 }
 
 #toggle {
-  right: 0px
+  right: 0px;
 }
 
 .logo-image {
@@ -77,24 +103,24 @@ function changeMode(value, title){
 
 #navigation-tabs {
   display: flex;
-  margin-left: 20px
+  margin-left: 20px;
 }
 
 .navigation-tab {
-  color: var(--vt-c-text-light-2); 
+  color: var(--vt-c-text-light-2);
   cursor: pointer;
-  text-decoration: underline; 
+  text-decoration: underline;
   margin-right: 20px;
 }
 
 .navigation-tab:hover {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .selected-tab {
-  font-weight: bold; 
+  font-weight: bold;
   color: var(--neumorphic-blue);
   border-bottom: 2px solid var(--neumorphic-blue);
-  margin-right: 20px
+  margin-right: 20px;
 }
 </style>
